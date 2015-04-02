@@ -1,0 +1,22 @@
+#
+# For a description of the syntax of this configuration file,
+# see misc/tools/kconfig-language.txt.
+#
+
+config EXAMPLES_SAM4PWM
+	bool "\"pwm je ne sais quoi\" example"
+	default n
+	---help---
+		Enable the \"Hello, World!\" example
+
+if EXAMPLES_SAM4PWM
+
+config EXAMPLES_SAM4PWM_PROGNAME
+	string "Program name"
+	default "sam4pwm"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+endif
