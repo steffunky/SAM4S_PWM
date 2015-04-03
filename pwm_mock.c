@@ -12,8 +12,7 @@ CODE int shut(FAR struct pwm_lowerhalf_s *dev)
 	return 0;
 }
 
-CODE int start(FAR struct pwm_lowerhalf_s *dev,
-			   FAR const struct pwm_info_s *info)
+CODE int start(FAR struct pwm_lowerhalf_s *dev, FAR const struct pwm_info_s *info)
 {
 	puts("3");
 	return 0;	
@@ -39,27 +38,31 @@ struct pwm_lowerhalf_s sam4s_pwm =
 	&sam4s_pwm_vt
 };
 
-
-void parse_args(struct pwm_state_s* g_pwmstate,int argc , char *argv[] ){
+void parse_args(struct pwm_state_s* g_pwmstate,int argc , char *argv[] )
+{
 	puts("parse_args");
 }
 
-int ioctle(int fd, int command, void * arg){
+int ioctle(int fd, int command, void * arg)
+{
 	puts("ioctl");
 	return 2;
 };
 
-int opene(char* path, int param){
+int opene(char* path, int param)
+{
 	puts("open");
 	return 3;
 }
 
-int pwm_register(FAR const char *path, FAR struct pwm_lowerhalf_s *dev){
+int pwm_register(FAR const char *path, FAR struct pwm_lowerhalf_s *dev)
+{
 	puts("pwm_register");
 	return 4;
 }
 
-int pwm_devinit(){
+int pwm_devinit()
+{
 	puts("pwm_devinit");
 	pwm_register("/dev/pwm0", &sam4s_pwm);
 	return 8;
