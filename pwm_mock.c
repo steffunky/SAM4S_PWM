@@ -12,8 +12,7 @@ CODE int shut(FAR struct pwm_lowerhalf_s *dev)
 	return 0;
 }
 
-CODE int start(FAR struct pwm_lowerhalf_s *dev,
-			   FAR const struct pwm_info_s *info)
+CODE int start(FAR struct pwm_lowerhalf_s *dev, FAR const struct pwm_info_s *info)
 {
 	puts("3");
 	return 0;	
@@ -49,15 +48,18 @@ int mock_ioctl(int fd, int command, void * arg){
 	return 2;
 };
 
+
 int mock_open(char* path, int param){
 	puts("open");
 	return 3;
 }
 
+
 int mock_pwm_register(FAR const char *path, FAR struct pwm_lowerhalf_s *dev){
 	puts("pwm_register");
 	return 4;
 }
+
 
 int mock_pwm_devinit(){
 	puts("pwm_devinit");
