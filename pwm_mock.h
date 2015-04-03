@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 typedef uint32_t ub16_t;
 typedef int bool;
 const int true = 1;
@@ -19,16 +21,16 @@ struct pwm_info_s
 struct pwm_state_s
 {
   bool      initialized;
-  char *devpath;
+  char 		*devpath;
   uint8_t   duty;
   uint32_t  freq;
   int       duration;
 };
 
-void parse_args(struct pwm_state_s* g_pwmstate,int argc , char *argv[] );
+void mock_parse_args(struct pwm_state_s* g_pwmstate,int argc , char *argv[] );
 
-int ioctle(int fd, int command, void * arg);
+int mock_ioctl(int fd, int command, void * arg);
 
-int opene(char* path, int param);
+int mock_open(char* path, int param);
 
-int pwm_devinit();
+int mock_pwm_devinit();

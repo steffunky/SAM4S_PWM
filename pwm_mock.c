@@ -1,4 +1,4 @@
-#include <pwm_mock.h>
+#include "pwm_mock.h"
 
 CODE int set(FAR struct pwm_lowerhalf_s *dev)
 {
@@ -40,26 +40,26 @@ struct pwm_lowerhalf_s sam4s_pwm =
 };
 
 
-void parse_args(struct pwm_state_s* g_pwmstate,int argc , char *argv[] ){
+void mock_parse_args(struct pwm_state_s* g_pwmstate,int argc , char *argv[] ){
 	puts("parse_args");
 }
 
-int ioctle(int fd, int command, void * arg){
+int mock_ioctl(int fd, int command, void * arg){
 	puts("ioctl");
 	return 2;
 };
 
-int opene(char* path, int param){
+int mock_open(char* path, int param){
 	puts("open");
 	return 3;
 }
 
-int pwm_register(FAR const char *path, FAR struct pwm_lowerhalf_s *dev){
+int mock_pwm_register(FAR const char *path, FAR struct pwm_lowerhalf_s *dev){
 	puts("pwm_register");
 	return 4;
 }
 
-int pwm_devinit(){
+int mock_pwm_devinit(){
 	puts("pwm_devinit");
 	pwm_register("/dev/pwm0", &sam4s_pwm);
 	return 8;
